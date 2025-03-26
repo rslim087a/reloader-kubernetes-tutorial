@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reloader
+  namespace: demo-reloader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reloader
+  template:
+    metadata:
+      labels:
+        app: reloader
+    spec:
+      serviceAccountName: reloader
+      containers:
+      - image: "ghcr.io/stakater/reloader:v1.0.71"
+        name: reloader
+        ports:
+        - name: http
+          containerPort: 9090

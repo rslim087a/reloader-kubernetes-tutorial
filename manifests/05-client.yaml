@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-client
+  namespace: demo-reloader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pg-client
+  template:
+    metadata:
+      labels:
+        app: pg-client
+    spec:
+      containers:
+      - name: pg-client
+        image: postgres:15-alpine
+        command: ["/bin/sh", "-c"]
+        args:
+        - while true; do
+            echo "Attempting to connect to PostgreSQL...";
+            PGPASSWORD=$(POSTGRES_PASSWORD) psql -h postgres -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "SELECT 'Successfully connected to PostgreSQL!'";
+            sleep 10;
+          done
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_USER
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_DB

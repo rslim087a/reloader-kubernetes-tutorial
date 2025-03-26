@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: demo-reloader
+  annotations:
+    reloader.stakater.com/auto: "true"
+data:
+  POSTGRES_DB: demoapp
+  POSTGRES_USER: demouser
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-secret
+  namespace: demo-reloader
+  annotations:
+    reloader.stakater.com/auto: "true"
+type: Opaque
+data:
+  POSTGRES_PASSWORD: ZGVtbzEyMw==

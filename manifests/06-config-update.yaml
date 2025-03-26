@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: demo-reloader
+  annotations:
+    reloader.stakater.com/auto: "true"
+data:
+  POSTGRES_DB: newdatabase
+  POSTGRES_USER: demouser

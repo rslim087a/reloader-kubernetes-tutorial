@@ -1,6 +1,6 @@
 # Vault External Secrets Tutorial
 
-This repo contains all the code needed to follow along with our **[YouTube Tutorial]()** or **[Written Article]()**.
+This repo contains all the code needed to follow along with our **[YouTube Tutorial]()** or **[Written Article](https://kubernetestraining.io/blog/reloader-kubernetes-hot-reload-configmaps-secrets)**.
 
 ## Prerequisites
 

@@ -1,6 +1,6 @@
 # Reloader Kubernetes Tutorial
 
-This repo contains all the code needed to follow along with our **[YouTube Tutorial](https://youtu.be/qiUl8znZ6Gw)** or **[Written Article](https://kubernetestraining.io/blog/reloader-kubernetes-hot-reload-configmaps-secrets)**.
+This repo contains all the code needed to follow along with our **[YouTube Tutorial](https://youtu.be/qiUl8znZ6Gw)**
 
 ## Prerequisites
 
